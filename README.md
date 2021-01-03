@@ -282,3 +282,7 @@ export default {
 
 #### Packaging Vue Components for NPM
 - https://vuejs.org/v2/cookbook/packaging-sfc-for-npm.html)
+
+
+## Contribution and Thanks
+- [Muhammad Elkhateeb](https://github.com/MELKHATEEB)
