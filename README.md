@@ -34,7 +34,27 @@ npm i -D rollup-plugin-vue
 npm i -D vue-template-compiler
 ```
 
-4. Set `rollup.config.js` configures (Needs more research)
+4. Set `package.json` file, It's important to add `main`, `module`, `unpkg`, `browser`,
+and `scripts` like this:
+
+```json
+...
+  "main": "dist/my-component.umd.js",
+  "module": "dist/my-component.esm.js",
+  "unpkg": "dist/my-component.min.js",
+  "browser": {
+    "./sfc": "src/my-component.vue"
+  },
+  "scripts": {
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/my-component.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/my-component.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/my-component.min.js"
+  },
+  ...
+```
+
+5. Set `rollup.config.js` configures (Needs more research)
 
 ```js
 import commonjs from '@rollup/plugin-commonjs'; // Convert CommonJS modules to ES6
@@ -59,7 +79,7 @@ export default {
 };
 ```
 
-5. Set `wrapper.js` file (Needs more research)
+6. Set `wrapper.js` file (Needs more research)
 
 ```js
 // Import vue component
@@ -95,7 +115,7 @@ if (GlobalVue) {
 export default component;
 ```
 
-6. Create you Vue/Nuxt component, preferred without *CSS* so each project can have it's own. For example:
+7. Create you Vue/Nuxt component, preferred without *CSS* so each project can have it's own. For example:
 
 ```js
 <template>
@@ -224,13 +244,13 @@ export default {
 </script>
 ```
 
-7. Inside your terminal write `npm run build` to build the package (Component).
+8. Inside your terminal write `npm run build` to build the package (Component).
 
-8. Update `README.md` file to document your new changes and modifications. This step is **very very important**.
+9. Update `README.md` file to document your new changes and modifications. This step is **very very important**.
 
-9. Update your package version for example `"version": "1.0.9"`. This step is also important and **you can't publish** your package (Component) without it.
+10. Update your package version for example `"version": "1.0.9"`. This step is also important and **you can't publish** your package (Component) without it.
 
-10. Publish your component on NPM with `npm publish --access public` command. Now you ready to use this component across all of your projects.
+11. Publish your component on NPM with `npm publish --access public` command. Now you ready to use this component across all of your projects.
 
 ## Step 3: Use your NPM component inside your project
 
