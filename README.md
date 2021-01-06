@@ -25,13 +25,10 @@ dist/
 README.md
 ```
 
-3. Install the following packages as **Developer Dependencies**
+3. You need to install the following packages as **Developer Dependencies**: `@rollup/plugin-buble`, `@rollup/plugin-commonjs`, `rollup-plugin-vue`, `vue-template-compiler`, `vue`, and `rollup`
 
-```
-npm i -D @rollup/plugin-buble
-npm i -D @rollup/plugin-commonjs
-npm i -D rollup-plugin-vue
-npm i -D vue-template-compiler
+```bash
+npm install -D @rollup/plugin-buble @rollup/plugin-commonjs rollup-plugin-vue vue-template-compiler vue rollup
 ```
 
 - The final `devDependencies` should looks like this:
@@ -41,15 +38,15 @@ npm i -D vue-template-compiler
 "devDependencies": {
   "@rollup/plugin-buble": "^0.21.3",
   "@rollup/plugin-commonjs": "^11.1.0",
-  "rollup": "^1.17.0", // IMPORTED FROM Rollup PACKAGE INSTALLED GLOBALE
+  "rollup": "^1.17.0",
   "rollup-plugin-vue": "^5.1.9",
-  "vue": "^2.6.10", // IMPORTED FROM Vue PACKAGE INSTALLED GLOBALE
+  "vue": "^2.6.10",
   "vue-template-compiler": "^2.6.12"
 },
 ...
 ```
 
-4. Set `package.json` file, It's important to add `main`, `module`, `unpkg`, `browser`,
+4. Inside `package.json` file, add `main`, `module`, `unpkg`, `browser`,
 and `scripts` like this:
 
 ```json
