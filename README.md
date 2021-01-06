@@ -25,16 +25,21 @@ dist/
 README.md
 ```
 
-3. You need to install the following packages as **Developer Dependencies**: `@rollup/plugin-buble`, `@rollup/plugin-commonjs`, `rollup-plugin-vue`, `vue-template-compiler`, `vue`, and `rollup`
-
-```bash
-npm install -D @rollup/plugin-buble @rollup/plugin-commonjs rollup-plugin-vue vue-template-compiler vue rollup
-```
-
-- The final `devDependencies` should looks like this:
+3. Inside your `package.json` file add the following:
 
 ```json
-...
+"main": "dist/my-component.umd.js",
+"module": "dist/my-component.esm.js",
+"unpkg": "dist/my-component.min.js",
+"browser": {
+  "./sfc": "src/my-component.vue"
+},
+"scripts": {
+  "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+  "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/my-component.umd.js",
+  "build:es": "rollup --config build/rollup.config.js --format es --file dist/my-component.esm.js",
+  "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/my-component.min.js"
+},
 "devDependencies": {
   "@rollup/plugin-buble": "^0.21.3",
   "@rollup/plugin-commonjs": "^11.1.0",
@@ -43,28 +48,9 @@ npm install -D @rollup/plugin-buble @rollup/plugin-commonjs rollup-plugin-vue vu
   "vue": "^2.6.10",
   "vue-template-compiler": "^2.6.12"
 },
-...
 ```
 
-4. Inside `package.json` file, add `main`, `module`, `unpkg`, `browser`,
-and `scripts` like this:
-
-```json
-...
-  "main": "dist/my-component.umd.js",
-  "module": "dist/my-component.esm.js",
-  "unpkg": "dist/my-component.min.js",
-  "browser": {
-    "./sfc": "src/my-component.vue"
-  },
-  "scripts": {
-    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/my-component.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/my-component.esm.js",
-    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/my-component.min.js"
-  },
-  ...
-```
+4. Run `npm i` to install the required **dependencies**. Notes that you need to use the **packages versions** shown in this example.
 
 5. Set `rollup.config.js` configures (Needs more research)
 
@@ -91,7 +77,8 @@ export default {
 };
 ```
 
-6. Set `wrapper.js` file (Needs more research)
+6. Set `wrapper.js` file (Needs more research).
+-  *Notes that you need to replace `my-component.vue` with your component name inside `src/`*
 
 ```js
 // Import vue component
