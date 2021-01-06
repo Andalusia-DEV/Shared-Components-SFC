@@ -34,6 +34,21 @@ npm i -D rollup-plugin-vue
 npm i -D vue-template-compiler
 ```
 
+- The final `devDependencies` should looks like this:
+
+```json
+...
+"devDependencies": {
+  "@rollup/plugin-buble": "^0.21.3",
+  "@rollup/plugin-commonjs": "^11.1.0",
+  "rollup": "^1.17.0", // IMPORTED FROM Rollup PACKAGE INSTALLED GLOBALE
+  "rollup-plugin-vue": "^5.1.9",
+  "vue": "^2.6.10", // IMPORTED FROM Vue PACKAGE INSTALLED GLOBALE
+  "vue-template-compiler": "^2.6.12"
+},
+...
+```
+
 4. Set `package.json` file, It's important to add `main`, `module`, `unpkg`, `browser`,
 and `scripts` like this:
 
